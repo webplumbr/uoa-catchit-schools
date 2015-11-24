@@ -97,6 +97,9 @@ shinyServer(
                                     ## Rachel: changed this to auto-detect the column-names with "Yes" in them:
                                     ## First remove column Sprung.no.kill because we won't analyse this:
                                     dat$Sprung.no.kill <- NULL
+                                    ## Also remove Pest.killed.by.shooting because this is already incorporated into
+                                    ## placement / bait /trap type:
+                                    dat$Pest.killed.by.shooting <- NULL
                                     ## Now delete any rows that don't contain "Yes" or "yes" at all:
                                     keep.rows <- apply(dat, 1, function(y) any(y=="Yes" | y=="yes"))
                                     keep.rows[is.na(keep.rows)] <- FALSE
